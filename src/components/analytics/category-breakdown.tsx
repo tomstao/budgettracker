@@ -5,12 +5,12 @@ import { formatCurrency } from "@/lib/utils/currency";
 
 // Mock data - replace with actual API calls
 const mockData = [
-  { name: "Food & Dining", amount: 1250, percentage: 35, color: "#ef4444" },
-  { name: "Transportation", amount: 800, percentage: 22, color: "#f59e0b" },
-  { name: "Entertainment", amount: 600, percentage: 17, color: "#8b5cf6" },
-  { name: "Shopping", amount: 450, percentage: 13, color: "#06b6d4" },
-  { name: "Utilities", amount: 300, percentage: 8, color: "#10b981" },
-  { name: "Other", amount: 150, percentage: 5, color: "#6b7280" },
+  { name: "Food & Dining", amount: 1250, percentage: 35, color: "hsl(var(--chart-1))" },
+  { name: "Transportation", amount: 800, percentage: 22, color: "hsl(var(--chart-2))" },
+  { name: "Entertainment", amount: 600, percentage: 17, color: "hsl(var(--chart-3))" },
+  { name: "Shopping", amount: 450, percentage: 13, color: "hsl(var(--chart-4))" },
+  { name: "Utilities", amount: 300, percentage: 8, color: "hsl(var(--chart-5))" },
+  { name: "Other", amount: 150, percentage: 5, color: "hsl(var(--muted-foreground))" },
 ];
 
 export function CategoryBreakdown() {

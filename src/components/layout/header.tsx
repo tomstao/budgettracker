@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuthStore } from "@/lib/store/auth-store";
 import { useRouter } from "next/navigation";
 
@@ -76,6 +77,8 @@ export function Header({ onMenuClick }: HeaderProps) {
           />
         </form>
         <div className="flex items-center gap-x-4 lg:gap-x-6">
+          <ThemeToggle />
+          
           <Button
             variant="ghost"
             size="sm"

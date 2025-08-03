@@ -11,7 +11,7 @@ const mockCategories = [
   {
     id: "1",
     name: "Food & Dining",
-    color: "#ef4444",
+    color: "hsl(var(--chart-1))",
     icon: "🍽️",
     type: "expense" as const,
     transactionCount: 15,
@@ -19,7 +19,7 @@ const mockCategories = [
   {
     id: "2",
     name: "Transportation",
-    color: "#f59e0b",
+    color: "hsl(var(--chart-4))",
     icon: "🚗",
     type: "expense" as const,
     transactionCount: 8,
@@ -27,7 +27,7 @@ const mockCategories = [
   {
     id: "3",
     name: "Entertainment",
-    color: "#8b5cf6",
+    color: "hsl(var(--chart-5))",
     icon: "🎬",
     type: "expense" as const,
     transactionCount: 6,
@@ -35,7 +35,7 @@ const mockCategories = [
   {
     id: "4",
     name: "Shopping",
-    color: "#06b6d4",
+    color: "hsl(var(--chart-6))",
     icon: "🛍️",
     type: "expense" as const,
     transactionCount: 12,
@@ -43,7 +43,7 @@ const mockCategories = [
   {
     id: "5",
     name: "Salary",
-    color: "#22c55e",
+    color: "hsl(var(--chart-2))",
     icon: "💰",
     type: "income" as const,
     transactionCount: 3,
@@ -51,7 +51,7 @@ const mockCategories = [
   {
     id: "6",
     name: "Freelance",
-    color: "#3b82f6",
+    color: "hsl(var(--chart-3))",
     icon: "💼",
     type: "income" as const,
     transactionCount: 5,

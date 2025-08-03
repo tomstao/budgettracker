@@ -11,19 +11,19 @@ import { PiggyBank } from "lucide-react";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-              <PiggyBank className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+              <PiggyBank className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-foreground">
               ExpenseTracker
             </span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>
+          <p className="text-muted-foreground mt-2">
             Sign in to your account to continue
           </p>
         </div>
@@ -38,11 +38,11 @@ export default function LoginPage() {
           <CardContent>
             <LoginForm />
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Don't have an account?{" "}
                 <Link
                   href="/register"
-                  className="text-blue-600 hover:text-blue-500 font-medium"
+                  className="text-primary hover:text-primary/90 font-medium"
                 >
                   Sign up
                 </Link>
@@ -54,7 +54,7 @@ export default function LoginPage() {
         <div className="mt-6 text-center">
           <Link
             href="/reset-password"
-            className="text-sm text-blue-600 hover:text-blue-500"
+            className="text-sm text-primary hover:text-primary/90"
           >
             Forgot your password?
           </Link>

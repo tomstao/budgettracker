@@ -40,8 +40,8 @@ export function IncomeExpenseChart() {
                   "",
                 ]}
               />
-              <Bar dataKey="income" fill="#22c55e" name="Income" />
-              <Bar dataKey="expense" fill="#ef4444" name="Expense" />
+              <Bar dataKey="income" fill="hsl(var(--chart-2))" name="Income" />
+              <Bar dataKey="expense" fill="hsl(var(--chart-1))" name="Expense" />
             </BarChart>
           </ResponsiveContainer>
         </div>

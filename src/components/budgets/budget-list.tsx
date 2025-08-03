@@ -16,7 +16,7 @@ const mockBudgets = [
     name: "Food & Dining Budget",
     amount: 500,
     spent: 320,
-    category: { name: "Food & Dining", color: "#ef4444" },
+    category: { name: "Food & Dining", color: "hsl(var(--chart-1))" },
     period: "monthly" as const,
     startDate: "2024-01-01",
     endDate: "2024-01-31",
@@ -26,7 +26,7 @@ const mockBudgets = [
     name: "Transportation Budget",
     amount: 200,
     spent: 145,
-    category: { name: "Transportation", color: "#f59e0b" },
+    category: { name: "Transportation", color: "hsl(var(--chart-4))" },
     period: "monthly" as const,
     startDate: "2024-01-01",
     endDate: "2024-01-31",
@@ -36,7 +36,7 @@ const mockBudgets = [
     name: "Entertainment Budget",
     amount: 150,
     spent: 89,
-    category: { name: "Entertainment", color: "#8b5cf6" },
+    category: { name: "Entertainment", color: "hsl(var(--chart-5))" },
     period: "monthly" as const,
     startDate: "2024-01-01",
     endDate: "2024-01-31",
@@ -46,7 +46,7 @@ const mockBudgets = [
     name: "Shopping Budget",
     amount: 300,
     spent: 267,
-    category: { name: "Shopping", color: "#06b6d4" },
+    category: { name: "Shopping", color: "hsl(var(--chart-6))" },
     period: "monthly" as const,
     startDate: "2024-01-01",
     endDate: "2024-01-31",
@@ -123,7 +123,7 @@ export function BudgetList() {
                 style={
                   {
                     "--progress-background": isOverBudget
-                      ? "#ef4444"
+                      ? "hsl(var(--destructive))"
                       : budget.category.color,
                   } as React.CSSProperties
                 }

@@ -66,14 +66,14 @@ const generatePDFHTML = (data: ExportData): string => {
     <head>
       <title>Expense Tracker Report</title>
       <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { font-family: var(--font-sans); margin: 20px; }
         .header { text-align: center; margin-bottom: 30px; }
         .section { margin-bottom: 30px; }
-        .section h2 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .section h2 { color: var(--foreground); border-bottom: 2px solid var(--border); padding-bottom: 10px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .summary { background-color: #f9f9f9; padding: 15px; border-radius: 5px; }
+        th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+        th { background-color: var(--muted); }
+        .summary { background-color: var(--muted); padding: 15px; border-radius: var(--radius); }
       </style>
     </head>
     <body>
