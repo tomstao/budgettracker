@@ -20,6 +20,22 @@ interface HeaderProps {
   onMenuClick: () => void;
 }
 
+
+const getInitials = (firstName?: string, lastName?: string) => {
+  if (!firstName && !lastName) return "U";
+
+  const first = firstName || "";
+  const last = lastName || "";
+
+  return (first + " " + last)
+      .trim()
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+};
+
 export function Header({ onMenuClick }: HeaderProps) {
   const { user, logout } = useAuthStore();
   const router = useRouter();
@@ -27,21 +43,6 @@ export function Header({ onMenuClick }: HeaderProps) {
   const handleLogout = () => {
     logout();
     router.push("/login");
-  };
-
-  const getInitials = (firstName?: string, lastName?: string) => {
-    if (!firstName && !lastName) return "U";
-
-    const first = firstName || "";
-    const last = lastName || "";
-
-    return (first + " " + last)
-      .trim()
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
   };
 
   return (
@@ -100,14 +101,13 @@ export function Header({ onMenuClick }: HeaderProps) {
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
                   <AvatarImage
-                    src={user?.avatar}
-                    alt={user ? `${user.firstName} ${user.lastName}` : "User"}
+                      src={user?.avatar}
+                      alt={user ? `${user.firstName} ${user.lastName}` : "User"}
                   />
                   <AvatarFallback>
                     {getInitials(user?.firstName, user?.lastName)}
                   </AvatarFallback>
-                </Avatar>
-              </Button>
+                </Avatar>              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
