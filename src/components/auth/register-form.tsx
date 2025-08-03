@@ -52,10 +52,10 @@ export function RegisterForm() {
             type="text"
             placeholder="Enter your first name"
             {...register("firstName")}
-            className={errors.firstName ? "border-red-500" : ""}
+            className={errors.firstName ? "border-destructive" : ""}
           />
           {errors.firstName && (
-            <p className="text-sm text-red-500">{errors.firstName.message}</p>
+            <p className="text-sm text-destructive">{errors.firstName.message}</p>
           )}
         </div>
         <div className="space-y-2">
@@ -65,10 +65,10 @@ export function RegisterForm() {
             type="text"
             placeholder="Enter your last name"
             {...register("lastName")}
-            className={errors.lastName ? "border-red-500" : ""}
+            className={errors.lastName ? "border-destructive" : ""}
           />
           {errors.lastName && (
-            <p className="text-sm text-red-500">{errors.lastName.message}</p>
+            <p className="text-sm text-destructive">{errors.lastName.message}</p>
           )}
         </div>
       </div>
@@ -80,10 +80,10 @@ export function RegisterForm() {
           type="email"
           placeholder="Enter your email"
           {...register("email")}
-          className={errors.email ? "border-red-500" : ""}
+          className={errors.email ? "border-destructive" : ""}
         />
         {errors.email && (
-          <p className="text-sm text-red-500">{errors.email.message}</p>
+          <p className="text-sm text-destructive">{errors.email.message}</p>
         )}
       </div>
 
@@ -94,13 +94,13 @@ export function RegisterForm() {
           type="password"
           placeholder="Create a password"
           {...register("password")}
-          className={errors.password ? "border-red-500" : ""}
+          className={errors.password ? "border-destructive" : ""}
         />
         {errors.password && (
-          <p className="text-sm text-red-500">{errors.password.message}</p>
+          <p className="text-sm text-destructive">{errors.password.message}</p>
         )}
         {password && (
-          <div className="text-xs text-gray-500 mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             Password must contain at least 8 characters, one uppercase letter,
             one lowercase letter, and one number
           </div>
@@ -114,18 +114,18 @@ export function RegisterForm() {
           type="password"
           placeholder="Confirm your password"
           {...register("confirmPassword")}
-          className={errors.confirmPassword ? "border-red-500" : ""}
+          className={errors.confirmPassword ? "border-destructive" : ""}
         />
         {errors.confirmPassword && (
-          <p className="text-sm text-red-500">
+          <p className="text-sm text-destructive">
             {errors.confirmPassword.message}
           </p>
         )}
       </div>
 
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-sm text-red-600">{error}</p>
+        <div className="p-3 bg-destructive/10 border border-destructive rounded-md">
+          <p className="text-sm text-destructive">{error}</p>
         </div>
       )}
 

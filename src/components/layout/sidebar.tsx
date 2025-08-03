@@ -49,7 +49,7 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-900/80" />
+            <div className="fixed inset-0 bg-black/80" />
           </Transition.Child>
 
           <div className="fixed inset-0 flex">
@@ -84,13 +84,13 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
                   </div>
                 </Transition.Child>
                 {/* Sidebar component for mobile */}
-                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
+                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-background px-6 pb-4">
                   <div className="flex h-16 shrink-0 items-center">
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <BarChart3 className="w-5 h-5 text-white" />
+                      <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <BarChart3 className="w-5 h-5 text-primary-foreground" />
                       </div>
-                      <span className="text-xl font-bold text-gray-900">
+                      <span className="text-xl font-bold text-foreground">
                         ExpenseTracker
                       </span>
                     </div>
@@ -105,8 +105,8 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
                                 href={item.href}
                                 className={cn(
                                   pathname === item.href
-                                    ? "bg-gray-50 text-blue-600"
-                                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50",
+                                    ? "bg-accent text-primary"
+                                    : "text-foreground hover:text-primary hover:bg-accent",
                                   "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                 )}
                                 onClick={() => setOpen(false)}
@@ -114,8 +114,8 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
                                 <item.icon
                                   className={cn(
                                     pathname === item.href
-                                      ? "text-blue-600"
-                                      : "text-gray-400 group-hover:text-blue-600",
+                                      ? "text-primary"
+                                      : "text-muted-foreground group-hover:text-primary",
                                     "h-6 w-6 shrink-0"
                                   )}
                                   aria-hidden="true"
@@ -137,13 +137,13 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
 
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
+        <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-border bg-background px-6 pb-4">
           <div className="flex h-16 shrink-0 items-center">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <BarChart3 className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <BarChart3 className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-xl font-bold text-foreground">
                 ExpenseTracker
               </span>
             </div>
@@ -158,16 +158,16 @@ export function Sidebar({ open, setOpen }: SidebarProps) {
                         href={item.href}
                         className={cn(
                           pathname === item.href
-                            ? "bg-gray-50 text-blue-600"
-                            : "text-gray-700 hover:text-blue-600 hover:bg-gray-50",
+                            ? "bg-accent text-primary"
+                            : "text-foreground hover:text-primary hover:bg-accent",
                           "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                         )}
                       >
                         <item.icon
                           className={cn(
                             pathname === item.href
-                              ? "text-blue-600"
-                              : "text-gray-400 group-hover:text-blue-600",
+                              ? "text-primary"
+                              : "text-muted-foreground group-hover:text-primary",
                             "h-6 w-6 shrink-0"
                           )}
                           aria-hidden="true"

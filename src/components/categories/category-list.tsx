@@ -92,7 +92,7 @@ export function CategoryList() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-red-600 hover:text-red-700"
+                  className="text-destructive hover:text-destructive/80"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>
@@ -101,7 +101,7 @@ export function CategoryList() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 {category.transactionCount} transactions
               </span>
               <div
@@ -114,11 +114,11 @@ export function CategoryList() {
       ))}
 
       {/* Add new category card */}
-      <Card className="border-dashed border-2 border-gray-300 hover:border-gray-400 transition-colors">
+      <Card className="border-dashed border-2 border-border hover:border-border/80 transition-colors">
         <CardContent className="flex items-center justify-center h-32">
           <Link
             href="/categories/new"
-            className="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-700"
+            className="flex flex-col items-center space-y-2 text-muted-foreground hover:text-foreground"
           >
             <Plus className="h-8 w-8" />
             <span className="text-sm font-medium">Add New Category</span>

@@ -48,10 +48,10 @@ export function LoginForm() {
           type="email"
           placeholder="Enter your email"
           {...register("email")}
-          className={errors.email ? "border-red-500" : ""}
+          className={errors.email ? "border-destructive" : ""}
         />
         {errors.email && (
-          <p className="text-sm text-red-500">{errors.email.message}</p>
+          <p className="text-sm text-destructive">{errors.email.message}</p>
         )}
       </div>
 
@@ -62,16 +62,16 @@ export function LoginForm() {
           type="password"
           placeholder="Enter your password"
           {...register("password")}
-          className={errors.password ? "border-red-500" : ""}
+          className={errors.password ? "border-destructive" : ""}
         />
         {errors.password && (
-          <p className="text-sm text-red-500">{errors.password.message}</p>
+          <p className="text-sm text-destructive">{errors.password.message}</p>
         )}
       </div>
 
       {error && (
-        <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-          <p className="text-sm text-red-600">{error}</p>
+        <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+          <p className="text-sm text-destructive">{error}</p>
         </div>
       )}
 

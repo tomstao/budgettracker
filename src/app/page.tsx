@@ -17,15 +17,15 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-primary/10">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <PiggyBank className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <PiggyBank className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-xl font-bold text-foreground">
               ExpenseTracker
             </span>
           </div>
@@ -42,11 +42,11 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-5xl font-bold text-gray-900 mb-6">
+        <h1 className="text-5xl font-bold text-foreground mb-6">
           Take Control of Your
-          <span className="text-blue-600"> Finances</span>
+          <span className="text-primary"> Finances</span>
         </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Track your expenses, set budgets, and gain insights into your spending
           habits. Start your journey to financial freedom today.
         </p>
@@ -67,14 +67,14 @@ export default function HomePage() {
 
       {/* Features Section */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-3xl font-bold text-center text-foreground mb-12">
           Everything you need to manage your money
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <CreditCard className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                <CreditCard className="w-6 h-6 text-primary" />
               </div>
               <CardTitle>Track Expenses</CardTitle>
               <CardDescription>
@@ -86,8 +86,8 @@ export default function HomePage() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-chart-2/20 rounded-lg flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-chart-2" />
               </div>
               <CardTitle>Set Budgets</CardTitle>
               <CardDescription>
@@ -99,8 +99,8 @@ export default function HomePage() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-chart-3/20 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-chart-3" />
               </div>
               <CardTitle>Analytics & Insights</CardTitle>
               <CardDescription>
@@ -114,12 +114,12 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
-        <Card className="bg-blue-600 text-white border-0">
+        <Card className="bg-primary text-primary-foreground border-0">
           <CardContent className="text-center py-16">
             <h2 className="text-3xl font-bold mb-4">
               Ready to start your financial journey?
             </h2>
-            <p className="text-blue-100 mb-8 text-lg">
+            <p className="text-primary-foreground/80 mb-8 text-lg">
               Join thousands of users who are already taking control of their
               finances.
             </p>
@@ -138,8 +138,8 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 border-t border-gray-200">
-        <div className="text-center text-gray-600">
+      <footer className="container mx-auto px-4 py-8 border-t border-border">
+        <div className="text-center text-muted-foreground">
           <p>&copy; 2024 ExpenseTracker. All rights reserved.</p>
         </div>
       </footer>

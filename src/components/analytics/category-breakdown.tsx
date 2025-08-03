@@ -33,7 +33,7 @@ export function CategoryBreakdown() {
                 />
                 <div>
                   <p className="font-medium text-sm">{category.name}</p>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-muted-foreground">
                     {category.percentage}%
                   </p>
                 </div>
@@ -42,7 +42,7 @@ export function CategoryBreakdown() {
                 <p className="font-medium text-sm">
                   {formatCurrency(category.amount)}
                 </p>
-                <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full"
                     style={{

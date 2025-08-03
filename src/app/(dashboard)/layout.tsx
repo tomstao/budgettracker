@@ -19,7 +19,7 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
       <MobileNav open={sidebarOpen} setOpen={setSidebarOpen} />
 

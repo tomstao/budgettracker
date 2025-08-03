@@ -21,13 +21,13 @@ export function OverviewCards() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Income</CardTitle>
-          <TrendingUp className="h-4 w-4 text-green-600" />
+          <TrendingUp className="h-4 w-4 text-chart-2" />
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
             {formatCurrency(mockData.totalIncome)}
           </div>
-          <p className="text-xs text-green-600">
+          <p className="text-xs text-chart-2">
             +{mockData.incomeChange}% from last month
           </p>
         </CardContent>
@@ -36,13 +36,13 @@ export function OverviewCards() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Total Expenses</CardTitle>
-          <TrendingDown className="h-4 w-4 text-red-600" />
+          <TrendingDown className="h-4 w-4 text-destructive" />
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
             {formatCurrency(mockData.totalExpense)}
           </div>
-          <p className="text-xs text-red-600">
+          <p className="text-xs text-destructive">
             {mockData.expenseChange}% from last month
           </p>
         </CardContent>
@@ -51,13 +51,13 @@ export function OverviewCards() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Net Amount</CardTitle>
-          <DollarSign className="h-4 w-4 text-blue-600" />
+          <DollarSign className="h-4 w-4 text-primary" />
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
             {formatCurrency(mockData.netAmount)}
           </div>
-          <p className="text-xs text-blue-600">
+          <p className="text-xs text-primary">
             +{mockData.netChange}% from last month
           </p>
         </CardContent>
@@ -66,11 +66,11 @@ export function OverviewCards() {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Transactions</CardTitle>
-          <CreditCard className="h-4 w-4 text-gray-600" />
+          <CreditCard className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{mockData.transactionCount}</div>
-          <p className="text-xs text-gray-600">This month</p>
+          <p className="text-xs text-muted-foreground">This month</p>
         </CardContent>
       </Card>
     </div>

@@ -63,7 +63,7 @@ export function BudgetProgress() {
                       {formatCurrency(budget.spent)} /{" "}
                       {formatCurrency(budget.budget)}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       {formatCurrency(remaining)} remaining
                     </p>
                   </div>
@@ -77,7 +77,7 @@ export function BudgetProgress() {
                     } as React.CSSProperties
                   }
                 />
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-muted-foreground">
                   {percentage.toFixed(1)}% used
                 </p>
               </div>

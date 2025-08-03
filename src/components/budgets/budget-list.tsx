@@ -67,7 +67,7 @@ export function BudgetList() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-lg">{budget.name}</CardTitle>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted-foreground">
                     {budget.category.name}
                   </p>
                 </div>
@@ -87,7 +87,7 @@ export function BudgetList() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700"
+                    className="text-destructive hover:text-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -107,7 +107,7 @@ export function BudgetList() {
                   </p>
                   <p
                     className={`text-xs ${
-                      isOverBudget ? "text-red-600" : "text-gray-500"
+                      isOverBudget ? "text-destructive" : "text-muted-foreground"
                     }`}
                   >
                     {isOverBudget
@@ -129,7 +129,7 @@ export function BudgetList() {
                 }
               />
 
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>{percentage.toFixed(1)}% used</span>
                 <span>
                   {formatDate(budget.startDate)} - {formatDate(budget.endDate)}
@@ -141,11 +141,11 @@ export function BudgetList() {
       })}
 
       {/* Add new budget card */}
-      <Card className="border-dashed border-2 border-gray-300 hover:border-gray-400 transition-colors">
+      <Card className="border-dashed border-2 border-border hover:border-border/80 transition-colors">
         <CardContent className="flex items-center justify-center h-48">
           <Link
             href="/budgets/new"
-            className="flex flex-col items-center space-y-2 text-gray-500 hover:text-gray-700"
+            className="flex flex-col items-center space-y-2 text-muted-foreground hover:text-foreground"
           >
             <Plus className="h-8 w-8" />
             <span className="text-sm font-medium">Add New Budget</span>

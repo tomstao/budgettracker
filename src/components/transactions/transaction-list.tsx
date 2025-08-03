@@ -68,7 +68,7 @@ export function TransactionList() {
           {mockTransactions.map((transaction) => (
             <div
               key={transaction.id}
-              className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent transition-colors"
             >
               <div className="flex items-center space-x-4">
                 <div
@@ -76,14 +76,14 @@ export function TransactionList() {
                   style={{ backgroundColor: transaction.category.color }}
                 />
                 <div>
-                  <p className="font-medium text-gray-900">
+                  <p className="font-medium text-foreground">
                     {transaction.title}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted-foreground">
                     {transaction.category.name}
                   </p>
                   {transaction.description && (
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                       {transaction.description}
                     </p>
                   )}
@@ -95,14 +95,14 @@ export function TransactionList() {
                   <p
                     className={`font-medium ${
                       transaction.type === "income"
-                        ? "text-green-600"
-                        : "text-red-600"
+                        ? "text-chart-2"
+                        : "text-destructive"
                     }`}
                   >
                     {transaction.type === "income" ? "+" : "-"}
                     {formatCurrency(transaction.amount)}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted-foreground">
                     {formatDate(transaction.date)}
                   </p>
                 </div>
@@ -129,7 +129,7 @@ export function TransactionList() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-red-600 hover:text-red-700"
+                    className="text-destructive hover:text-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
