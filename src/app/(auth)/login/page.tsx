@@ -7,24 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { PiggyBank } from "lucide-react";
+import {Logo} from "@/components/shared/logo";
 
 export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <PiggyBank className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-2xl font-bold text-foreground">
-              ExpenseTracker
-            </span>
-          </div>
-          <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>
+        <div className="text-center mb-8 flex flex-col items-center space-y-4">
+          <Logo/>
           <p className="text-muted-foreground mt-2">
-            Sign in to your account to continue
+            Welcome back! Sign in to your account to continue
           </p>
         </div>
 

@@ -43,21 +43,21 @@ export function TrendChart() {
               <Line
                 type="monotone"
                 dataKey="income"
-                stroke="hsl(var(--chart-2))"
+                stroke="var(--chart-2)"
                 strokeWidth={2}
                 name="Income"
               />
               <Line
                 type="monotone"
                 dataKey="expense"
-                stroke="hsl(var(--chart-1))"
+                stroke="var(--chart-1)"
                 strokeWidth={2}
                 name="Expense"
               />
               <Line
                 type="monotone"
                 dataKey="net"
-                stroke="hsl(var(--chart-3))"
+                stroke="var(--chart-3)"
                 strokeWidth={2}
                 name="Net"
               />

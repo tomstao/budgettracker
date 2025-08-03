@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { PiggyBank } from "lucide-react";
+import {Logo} from "@/components/shared/logo";
 
 export default function RegisterPage() {
   return (
@@ -15,12 +15,7 @@ export default function RegisterPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <PiggyBank className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-2xl font-bold text-foreground">
-              ExpenseTracker
-            </span>
+            <Logo/>
           </div>
           <h1 className="text-2xl font-bold text-foreground">
             Create your account

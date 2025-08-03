@@ -44,14 +44,14 @@ export function ExpenseChart() {
               <Line
                 type="monotone"
                 dataKey="income"
-                stroke="hsl(var(--chart-2))"
+                stroke="var(--chart-2)"
                 strokeWidth={2}
                 name="Income"
               />
               <Line
                 type="monotone"
                 dataKey="expense"
-                stroke="hsl(var(--chart-1))"
+                stroke="var(--chart-1)"
                 strokeWidth={2}
                 name="Expense"
               />

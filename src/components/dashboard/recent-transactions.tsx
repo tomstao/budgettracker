@@ -15,7 +15,7 @@ const mockTransactions = [
     title: "Grocery Shopping",
     amount: 125.5,
     type: "expense" as const,
-    category: { name: "Food & Dining", color: "hsl(var(--chart-1))" },
+    category: { name: "Food & Dining", color: "var(--chart-1)" },
     date: "2024-01-15",
   },
   {
@@ -23,7 +23,7 @@ const mockTransactions = [
     title: "Salary",
     amount: 5000,
     type: "income" as const,
-    category: { name: "Salary", color: "hsl(var(--chart-2))" },
+    category: { name: "Salary", color: "var(--chart-2)" },
     date: "2024-01-14",
   },
   {
@@ -31,7 +31,7 @@ const mockTransactions = [
     title: "Gas Station",
     amount: 45.0,
     type: "expense" as const,
-    category: { name: "Transportation", color: "hsl(var(--chart-4))" },
+    category: { name: "Transportation", color: "var(--chart-4)" },
     date: "2024-01-13",
   },
   {
@@ -39,7 +39,7 @@ const mockTransactions = [
     title: "Freelance Project",
     amount: 800,
     type: "income" as const,
-    category: { name: "Freelance", color: "hsl(var(--chart-3))" },
+    category: { name: "Freelance", color: "var(--chart-3)" },
     date: "2024-01-12",
   },
   {
@@ -47,7 +47,7 @@ const mockTransactions = [
     title: "Restaurant",
     amount: 67.8,
     type: "expense" as const,
-    category: { name: "Food & Dining", color: "hsl(var(--chart-1))" },
+    category: { name: "Food & Dining", color: "var(--chart-1)" },
     date: "2024-01-11",
   },
 ];

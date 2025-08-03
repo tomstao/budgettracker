@@ -11,28 +11,28 @@ const mockBudgets = [
     name: "Food & Dining",
     budget: 500,
     spent: 320,
-    color: "hsl(var(--chart-1))",
+    color: "var(--chart-1)",
   },
   {
     id: "2",
     name: "Transportation",
     budget: 200,
     spent: 145,
-    color: "hsl(var(--chart-4))",
+    color: "var(--chart-4)",
   },
   {
     id: "3",
     name: "Entertainment",
     budget: 150,
     spent: 89,
-    color: "hsl(var(--chart-5))",
+    color: "var(--chart-5)",
   },
   {
     id: "4",
     name: "Shopping",
     budget: 300,
     spent: 267,
-    color: "hsl(var(--chart-6))"
+    color: "var(--chart-6)"
   },
 ];
 
