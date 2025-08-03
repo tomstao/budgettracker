@@ -1,36 +1,219 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expense Tracker Frontend
+
+A modern, responsive expense tracking application built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **User Authentication**: Secure login and registration system
+- **Dashboard**: Overview of financial metrics and recent transactions
+- **Transaction Management**: Add, edit, and delete transactions with categories
+- **Category Management**: Organize transactions with custom categories
+- **Budget Tracking**: Set and monitor spending limits by category
+- **Analytics**: Visual insights into spending patterns and trends
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Modern UI**: Built with Shadcn UI components and Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI + Radix UI
+- **State Management**: Zustand
+- **Data Fetching**: TanStack React Query
+- **Form Handling**: React Hook Form + Zod validation
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── (auth)/            # Authentication pages
+│   ├── (dashboard)/       # Dashboard pages
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Landing page
+├── components/            # React components
+│   ├── ui/               # Shadcn UI components
+│   ├── auth/             # Authentication components
+│   ├── dashboard/        # Dashboard components
+│   ├── transactions/     # Transaction components
+│   ├── categories/       # Category components
+│   ├── budgets/          # Budget components
+│   ├── analytics/        # Analytics components
+│   ├── layout/           # Layout components
+│   └── shared/           # Shared components
+├── lib/                  # Utility libraries
+│   ├── api/              # API client and services
+│   ├── store/            # Zustand stores
+│   ├── utils/            # Utility functions
+│   └── validators/       # Zod validation schemas
+└── types/                # TypeScript type definitions
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd expensetracker_frontend
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` and add your configuration:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
 
-## Learn More
+## Key Features Implementation
 
-To learn more about Next.js, take a look at the following resources:
+### Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- JWT-based authentication with Zustand for state management
+- Protected routes with automatic redirect
+- Form validation with React Hook Form and Zod
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dashboard
 
-## Deploy on Vercel
+- Real-time overview cards with key metrics
+- Recent transactions list
+- Interactive charts for spending trends
+- Budget progress tracking
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Transactions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- CRUD operations for transactions
+- Advanced filtering and search
+- Category-based organization
+- Date-based sorting
+
+### Categories
+
+- Custom category creation with colors and icons
+- Type-based categorization (income/expense)
+- Transaction count tracking
+
+### Budgets
+
+- Monthly and yearly budget setting
+- Progress tracking with visual indicators
+- Over-budget alerts
+- Category-specific budgets
+
+### Analytics
+
+- Multiple chart types (line, bar, pie)
+- Spending pattern analysis
+- Category breakdown
+- Trend analysis
+- Data export functionality
+
+## Component Architecture
+
+The application follows a modular component architecture:
+
+- **UI Components**: Reusable Shadcn UI components
+- **Feature Components**: Domain-specific components
+- **Layout Components**: Navigation and layout structure
+- **Shared Components**: Common utilities and patterns
+
+## State Management
+
+- **Zustand**: Global state management for authentication and UI state
+- **React Query**: Server state management for API data
+- **React Hook Form**: Form state management with validation
+
+## API Integration
+
+The frontend is designed to work with a RESTful API backend. Key endpoints:
+
+- Authentication: `/api/auth/*`
+- Transactions: `/api/transactions`
+- Categories: `/api/categories`
+- Budgets: `/api/budgets`
+- Analytics: `/api/analytics`
+
+## Styling
+
+- **Tailwind CSS**: Utility-first CSS framework
+- **Shadcn UI**: Pre-built component library
+- **Responsive Design**: Mobile-first approach
+- **Dark Mode**: Ready for future implementation
+
+## Performance Optimizations
+
+- **Code Splitting**: Automatic with Next.js App Router
+- **Image Optimization**: Next.js Image component
+- **Lazy Loading**: Component-level lazy loading
+- **Caching**: React Query caching strategies
+- **Bundle Optimization**: Tree shaking and minification
+
+## Testing
+
+The project is set up for testing with:
+
+- **Jest**: Unit testing framework
+- **React Testing Library**: Component testing
+- **TypeScript**: Type safety and IntelliSense
+
+## Deployment
+
+The application can be deployed to:
+
+- **Vercel**: Recommended for Next.js applications
+- **Netlify**: Alternative deployment platform
+- **Docker**: Containerized deployment
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions, please open an issue in the repository.
