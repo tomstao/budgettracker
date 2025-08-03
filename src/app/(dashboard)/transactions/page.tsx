@@ -1,8 +1,6 @@
 import { TransactionList } from "@/components/transactions/transaction-list";
 import { TransactionFilters } from "@/components/transactions/transaction-filters";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import Link from "next/link";
+import {NewTransaction} from "@/components/transactions/transaction-new";
 
 export default function TransactionsPage() {
   return (
@@ -14,12 +12,7 @@ export default function TransactionsPage() {
             Manage and track your income and expenses.
           </p>
         </div>
-        <Link href="/transactions/new">
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Transaction
-          </Button>
-        </Link>
+            <NewTransaction/>
       </div>
 
       <TransactionFilters />
