@@ -122,7 +122,7 @@ export function NewTransaction() {
                                 disabled={isSubmitting}
                             />
                             {errors.expenseContent && (
-                                <p className="text-sm text-red-500">{errors.expenseContent.message}</p>
+                                <p className="text-sm text-destructive">{errors.expenseContent.message}</p>
                             )}
                         </div>
                         <div className="grid gap-2">
@@ -134,7 +134,7 @@ export function NewTransaction() {
                                 disabled={isSubmitting}
                             />
                             {errors.expenseType && (
-                                <p className="text-sm text-red-500">{errors.expenseType.message}</p>
+                                <p className="text-sm text-destructive">{errors.expenseType.message}</p>
                             )}
                         </div>
                         <div className="grid gap-2">
@@ -146,7 +146,7 @@ export function NewTransaction() {
                                 disabled={isSubmitting}
                             />
                             {errors.expenseDescription && (
-                                <p className="text-sm text-red-500">{errors.expenseDescription.message}</p>
+                                <p className="text-sm text-destructive">{errors.expenseDescription.message}</p>
                             )}
                         </div>
                         <div className="grid gap-2">
@@ -160,7 +160,7 @@ export function NewTransaction() {
                                 disabled={isSubmitting}
                             />
                             {errors.amount && (
-                                <p className="text-sm text-red-500">{errors.amount.message}</p>
+                                <p className="text-sm text-destructive">{errors.amount.message}</p>
                             )}
                         </div>
                     </div>
