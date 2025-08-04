@@ -18,16 +18,22 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Plus, Loader2 } from "lucide-react"
-import {toast} from "sonner";
+import { toast } from "sonner"
 
-// Define the validation schema
 const transactionSchema = z.object({
-    expenseContent: z.string().min(1, "Expense content is required").max(100, "Expense content must be less than 100 characters"),
-    expenseType: z.string().min(1, "Expense type is required").max(50, "Expense type must be less than 50 characters"),
-    expenseDescription: z.string().min(1, "Description is required").max(200, "Description must be less than 200 characters"),
-    amount: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-        message: "Amount must be a positive number",
-    }),
+    expenseContent: z
+        .string()
+        .min(1, "Expense content is required")
+        .max(100, "Expense content must be less than 100 characters"),
+    expenseType: z
+        .string()
+        .min(1, "Expense type is required")
+        .max(50, "Expense type must be less than 50 characters"),
+    expenseDescription: z
+        .string()
+        .min(1, "Description is required")
+        .max(200, "Description must be less than 200 characters"),
+    amount: z.coerce.number().positive("Amount must be a positive number"),
 })
 
 type TransactionFormData = z.infer<typeof transactionSchema>
@@ -47,7 +53,7 @@ export function NewTransaction() {
             expenseContent: "Daily expense",
             expenseType: "",
             expenseDescription: "",
-            amount: "",
+            amount: 0,
         },
     })
 
@@ -64,29 +70,35 @@ export function NewTransaction() {
                     content: data.expenseContent,
                     type: data.expenseType,
                     description: data.expenseDescription,
-                    amount: parseFloat(data.amount),
+                    amount: data.amount,
                 }),
             })
 
-            if (!response.ok) {
-                throw new Error("Failed to create transaction")
-            }
-
             const result = await response.json()
 
-            toast.success("Transaction successfully created")
+            if (!response.ok) {
+                throw new Error(result?.message || "Failed to create transaction")
+            }
+
+            toast.success(`Transaction added: ${result?.content || "Success"}`)
 
             reset()
             setOpen(false)
-        } catch (error) {
-            toast.error("Failed to create transaction. Please try again.")
+        } catch (error: any) {
+            toast.error(error.message || "Failed to create transaction. Please try again.")
         } finally {
             setIsSubmitting(false)
         }
     }
 
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog
+            open={open}
+            onOpenChange={(val) => {
+                setOpen(val)
+                if (!val) reset()
+            }}
+        >
             <DialogTrigger asChild>
                 <Button variant="default">
                     <Plus className="h-4 w-4 mr-2" />
@@ -98,7 +110,7 @@ export function NewTransaction() {
                     <DialogHeader>
                         <DialogTitle>Add New Transaction</DialogTitle>
                         <DialogDescription>
-                            Add new transaction to your tracker. Click save when you&apos;re done.
+                            Add new transaction to your tracker. Click save when you're done.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
