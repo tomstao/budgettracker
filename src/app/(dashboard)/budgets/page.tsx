@@ -1,7 +1,5 @@
 import { BudgetList } from "@/components/budgets/budget-list";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import Link from "next/link";
+import { NewBudget } from "@/components/budgets/budget-new";
 
 export default function BudgetsPage() {
   return (
@@ -13,12 +11,7 @@ export default function BudgetsPage() {
             Set and track your spending limits by category.
           </p>
         </div>
-        <Link href="/budgets/new">
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Budget
-          </Button>
-        </Link>
+        <NewBudget />
       </div>
 
       <BudgetList />

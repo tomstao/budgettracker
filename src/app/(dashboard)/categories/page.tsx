@@ -1,7 +1,6 @@
 import { CategoryList } from "@/components/categories/category-list";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import Link from "next/link";
+import { NewCategory } from "@/components/categories/category-new";
+import { ApiTest } from "@/components/debug/api-test";
 
 export default function CategoriesPage() {
   return (
@@ -13,14 +12,10 @@ export default function CategoriesPage() {
             Organize your transactions with custom categories.
           </p>
         </div>
-        <Link href="/categories/new">
-          <Button>
-            <Plus className="h-4 w-4 mr-2" />
-            Add Category
-          </Button>
-        </Link>
+        <NewCategory />
       </div>
 
+      <ApiTest />
       <CategoryList />
     </div>
   );

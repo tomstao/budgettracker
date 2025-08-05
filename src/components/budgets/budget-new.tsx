@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/select"
 import { Plus, Loader2 } from "lucide-react"
 import { toast } from "sonner"
-import { transactionSchema, TransactionFormData } from "@/lib/validators/transaction"
+import { budgetSchema, BudgetFormData } from "@/lib/validators/budget"
 import { API_BASE_URL } from "@/lib/config"
 import { getAuthHeaders, mockLogin, addCacheBuster } from "@/lib/auth"
 
@@ -33,15 +33,12 @@ interface Category {
     id: string
     name: string
     type: "income" | "expense"
-    color: string
-    icon: string
 }
 
-export function NewTransaction() {
+export function NewBudget() {
     const [open, setOpen] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [categories, setCategories] = useState<Category[]>([])
-    const [transactionType, setTransactionType] = useState<"income" | "expense">("expense")
 
     const {
         register,
@@ -50,27 +47,39 @@ export function NewTransaction() {
         reset,
         setValue,
         watch,
-    } = useForm<TransactionFormData>({
-        resolver: zodResolver(transactionSchema),
+    } = useForm<BudgetFormData>({
+        resolver: zodResolver(budgetSchema),
         defaultValues: {
-            title: "",
-            type: "expense",
-            categoryId: "",
-            description: "",
+            name: "",
             amount: "",
-            date: new Date().toISOString().split('T')[0],
+            categoryId: "",
+            period: "monthly",
+            startDate: new Date().toISOString().split('T')[0],
+            endDate: "",
         },
     })
 
-    const watchedType = watch("type")
+    const period = watch("period")
+    const startDate = watch("startDate")
 
     useEffect(() => {
         fetchCategories()
     }, [])
 
     useEffect(() => {
-        setTransactionType(watchedType)
-    }, [watchedType])
+        if (startDate && period) {
+            const start = new Date(startDate)
+            let end: Date
+            
+            if (period === "monthly") {
+                end = new Date(start.getFullYear(), start.getMonth() + 1, 0)
+            } else {
+                end = new Date(start.getFullYear() + 1, start.getMonth(), start.getDate() - 1)
+            }
+            
+            setValue("endDate", end.toISOString().split('T')[0])
+        }
+    }, [period, startDate, setValue])
 
     const fetchCategories = async () => {
         try {
@@ -79,7 +88,6 @@ export function NewTransaction() {
                 headers: getAuthHeaders()
             })
             if (response.status === 401) {
-                // Try mock login for development
                 await mockLogin()
                 const retryUrl = addCacheBuster(`${API_BASE_URL}/categories`)
                 const retryResponse = await fetch(retryUrl, {
@@ -87,50 +95,48 @@ export function NewTransaction() {
                 })
                 if (retryResponse.ok) {
                     const data = await retryResponse.json()
-                    setCategories(data)
+                    setCategories(data.filter((cat: Category) => cat.type === "expense"))
                 }
                 return
             }
             if (response.ok) {
                 const data = await response.json()
-                setCategories(data)
+                setCategories(data.filter((cat: Category) => cat.type === "expense"))
             }
         } catch (error) {
             console.error("Failed to fetch categories:", error)
         }
     }
 
-    const filteredCategories = categories.filter(cat => cat.type === transactionType)
-
-    const onSubmit = async (data: TransactionFormData) => {
+    const onSubmit = async (data: BudgetFormData) => {
         setIsSubmitting(true)
 
         try {
-            const response = await fetch(`${API_BASE_URL}/transactions`, {
+            const response = await fetch(`${API_BASE_URL}/budgets`, {
                 method: "POST",
                 headers: getAuthHeaders(),
                 body: JSON.stringify({
-                    title: data.title,
-                    type: data.type,
-                    categoryId: data.categoryId,
-                    description: data.description,
+                    name: data.name,
                     amount: parseFloat(data.amount),
-                    date: data.date,
+                    categoryId: data.categoryId,
+                    period: data.period,
+                    startDate: data.startDate,
+                    endDate: data.endDate,
                 }),
             })
 
             const result = await response.json()
 
             if (!response.ok) {
-                throw new Error(result?.message || "Failed to create transaction")
+                throw new Error(result?.message || "Failed to create budget")
             }
 
-            toast.success(`Transaction added: ${data.title}`)
+            toast.success(`Budget created: ${data.name}`)
 
             reset()
             setOpen(false)
         } catch (error: any) {
-            toast.error(error.message || "Failed to create transaction. Please try again.")
+            toast.error(error.message || "Failed to create budget. Please try again.")
         } finally {
             setIsSubmitting(false)
         }
@@ -147,77 +153,32 @@ export function NewTransaction() {
             <DialogTrigger asChild>
                 <Button variant="default">
                     <Plus className="h-4 w-4 mr-2" />
-                    New Transaction
+                    New Budget
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogHeader>
-                        <DialogTitle>Add New Transaction</DialogTitle>
+                        <DialogTitle>Add New Budget</DialogTitle>
                         <DialogDescription>
-                            Add new transaction to your tracker. Click save when you're done.
+                            Create a budget to track spending for a specific category.
                         </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid gap-2">
-                            <Label htmlFor="title">Title</Label>
+                            <Label htmlFor="name">Budget Name</Label>
                             <Input
-                                id="title"
-                                {...register("title")}
-                                placeholder="e.g. Grocery shopping"
+                                id="name"
+                                {...register("name")}
+                                placeholder="e.g. Monthly Food Budget"
                                 disabled={isSubmitting}
                             />
-                            {errors.title && (
-                                <p className="text-sm text-destructive">{errors.title.message}</p>
+                            {errors.name && (
+                                <p className="text-sm text-destructive">{errors.name.message}</p>
                             )}
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="type">Transaction Type</Label>
-                            <Select onValueChange={(value: "income" | "expense") => setValue("type", value)} defaultValue="expense">
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select transaction type" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="income">Income</SelectItem>
-                                    <SelectItem value="expense">Expense</SelectItem>
-                                </SelectContent>
-                            </Select>
-                            {errors.type && (
-                                <p className="text-sm text-destructive">{errors.type.message}</p>
-                            )}
-                        </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="categoryId">Category</Label>
-                            <Select onValueChange={(value) => setValue("categoryId", value)} disabled={isSubmitting}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select a category" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {filteredCategories.map((category) => (
-                                        <SelectItem key={category.id} value={category.id}>
-                                            {category.name}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                            {errors.categoryId && (
-                                <p className="text-sm text-destructive">{errors.categoryId.message}</p>
-                            )}
-                        </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="description">Description (Optional)</Label>
-                            <Input
-                                id="description"
-                                {...register("description")}
-                                placeholder="Weekly grocery shopping at Walmart"
-                                disabled={isSubmitting}
-                            />
-                            {errors.description && (
-                                <p className="text-sm text-destructive">{errors.description.message}</p>
-                            )}
-                        </div>
-                        <div className="grid gap-2">
-                            <Label htmlFor="amount">Amount</Label>
+                            <Label htmlFor="amount">Budget Amount</Label>
                             <Input
                                 id="amount"
                                 type="number"
@@ -231,15 +192,61 @@ export function NewTransaction() {
                             )}
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="date">Date</Label>
+                            <Label htmlFor="categoryId">Category</Label>
+                            <Select onValueChange={(value) => setValue("categoryId", value)} disabled={isSubmitting}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {categories.map((category) => (
+                                        <SelectItem key={category.id} value={category.id}>
+                                            {category.name}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            {errors.categoryId && (
+                                <p className="text-sm text-destructive">{errors.categoryId.message}</p>
+                            )}
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="period">Budget Period</Label>
+                            <Select onValueChange={(value: "monthly" | "yearly") => setValue("period", value)} defaultValue="monthly">
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select budget period" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="monthly">Monthly</SelectItem>
+                                    <SelectItem value="yearly">Yearly</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            {errors.period && (
+                                <p className="text-sm text-destructive">{errors.period.message}</p>
+                            )}
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="startDate">Start Date</Label>
                             <Input
-                                id="date"
+                                id="startDate"
                                 type="date"
-                                {...register("date")}
+                                {...register("startDate")}
                                 disabled={isSubmitting}
                             />
-                            {errors.date && (
-                                <p className="text-sm text-destructive">{errors.date.message}</p>
+                            {errors.startDate && (
+                                <p className="text-sm text-destructive">{errors.startDate.message}</p>
+                            )}
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="endDate">End Date</Label>
+                            <Input
+                                id="endDate"
+                                type="date"
+                                {...register("endDate")}
+                                disabled={isSubmitting}
+                                readOnly
+                            />
+                            {errors.endDate && (
+                                <p className="text-sm text-destructive">{errors.endDate.message}</p>
                             )}
                         </div>
                     </div>
@@ -256,7 +263,7 @@ export function NewTransaction() {
                                     Saving...
                                 </>
                             ) : (
-                                "Save changes"
+                                "Save Budget"
                             )}
                         </Button>
                     </DialogFooter>

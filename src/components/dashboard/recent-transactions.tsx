@@ -7,6 +7,7 @@ import { formatCurrency } from "@/lib/utils/currency";
 import { formatDate } from "@/lib/utils/date";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
+import {NewTransaction} from "@/components/transactions/transaction-new";
 
 // Mock data - replace with actual API calls
 const mockTransactions = [
@@ -58,12 +59,7 @@ export function RecentTransactions() {
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Recent Transactions</CardTitle>
         <div className="flex items-center space-x-2">
-          <Link href="/transactions/new">
-            <Button size="sm">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Transaction
-            </Button>
-          </Link>
+            <NewTransaction/>
           <Link href="/transactions">
             <Button variant="outline" size="sm">
               View All
